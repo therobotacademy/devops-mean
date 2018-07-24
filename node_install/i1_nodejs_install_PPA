@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# https://www.digitalocean.com/community/tutorials/como-instalar-node-js-en-ubuntu-16-04-es
+
+# On ubuntu/debian, the file /etc/pki/tls/certs/ca-bundle.crt is in /etc/ssl/certs/ca-certificates.crt
+# Create the symlink to be able to use the automated installation script
+sudo ln -s /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
+
+# And here we follow the tutorial
+cd ~
+curl -v -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
+# For Angular: The official Node.js version that is supported is 8.9 and greater
+
+sudo bash nodesource_setup.sh
+sudo apt-get install -y nodejs
+sudo apt-get install -y build-essential
+
+# npm is shipped with nodejs, so next command should not be necessary
+# sudo apt-get -y install npm
+
+echo 'nodejs version: "
+nodejs -v
+
+echo "npm version: "
+npm -v

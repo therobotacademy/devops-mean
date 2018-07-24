@@ -1,0 +1,53 @@
+# LTS version installation
+https://www.digitalocean.com/community/tutorials/como-instalar-node-js-en-ubuntu-16-04-es
+sudo apt-get update
+sudo apt-get install nodejs
+sudo apt-get install npm
+
+which nodejs # produces '/usr/bin'
+sudo ln -s /usr/local/bin/node /usr/bin/nodejs  # To link nodejs to the same binary
+node -v
+nodejs -v # Shall produce the same output version
+
+# ALTERNATIVE for switching between versions
+https://stackoverflow.com/questions/22457834/what-is-the-difference-between-node-vs-nodejs-command-in-terminal
+#Make sure to remove installed version of node, if any
+sudo apt-get remove nodejs
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+
+https://stackoverflow.com/questions/7718313/how-to-change-to-an-older-version-of-node-js
+n                            # Output versions installed
+n latest                     # Install or activate the latest node release
+n stable                     # Install or activate the latest stable node release
+n <version>                  # Install node <version>
+n use <version> [args ...]   # Execute node <version> with [args ...]
+n bin <version>              # Output bin path for <version>
+n rm <version ...>           # Remove the given version(s)
+n --latest                   # Output the latest node version available
+n --stable                   # Output the latest stable node version available
+n ls                         # Output the versions of node available
+
+######## LOCATIONS ############
+In '/usr/bin/', yo may see:
+    node -> nodejs*
+
+
+######## Node modules #########
+
+https://stackoverflow.com/questions/5926672/where-does-npm-install-packages
+
+sudo npm root -g
+# npm global path: /usr/local/lib/node_modules
+...
+sudo npm list -g
+# List globally installed modules
+
+npm root
+# npm local path: ~/.npm (/home/ubuntu/node_modules)
+# Node-RED pallete seems to install contrib modules in .npm folder
+# and mirroring to .node-red/node_modules
+...
+npm list
+# List locally installed modules
