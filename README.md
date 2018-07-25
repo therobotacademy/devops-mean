@@ -8,4 +8,4 @@ Training examples for learning MEAN stack (Angular will be deployed in a separat
    - '*node-examples*' folder and app
 
 ## 1.6.d Exercise (Instructions) Node and the HTTP Module
-   - '*node-examples*' folder and app
+   - '*node-http*' folder and app
