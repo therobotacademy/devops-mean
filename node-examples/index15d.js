@@ -1,7 +1,7 @@
 // Definition under file 'rectangle.js'
-var rect = require('./rectangle');
+var rect = require('./rectangle15d');
 
-// is equivalent to:
+// is equivalent to (substitutes 'var rect...'' line):
 /*
 var rect = {
 	perimeter: (x, y) => (2*(x+y)),
