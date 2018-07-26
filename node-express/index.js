@@ -22,35 +22,13 @@ app.use(bodyParser.json());
 
 //. . . 1.7.h
 //--------------------------------------------------
-app.use('/dishes', dishRouter);
+app.use('/dishes/', dishRouter);
+app.use('/dishes/:dishId', dishRouter);
 app.all('/dishes', (req,res,next) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   next();
 });
-
-/////////////////////////////////////////////////////////////////////////////
-// THIS PART (not routed) ALLOWS TO INTERACT WITH SINGLE ENTITIES (dishes)
-// ... does not work if put inside './router/dishRouter.js' Don't know why...
-app.get('/dishes/:dishId', (req,res,next) => {
-    res.end('Will send details of the dish: ' + req.params.dishId +' to you!');
-});
-
-app.post('/dishes/:dishId', (req, res, next) => {
-  res.statusCode = 403;
-  res.end('POST operation not supported on /dishes/'+ req.params.dishId);
-});
-
-app.put('/dishes/:dishId', (req, res, next) => {
-  res.write('Updating the dish: ' + req.params.dishId + '\n');
-  res.end('Will update the dish: ' + req.body.name +
-        ' with details: ' + req.body.description);
-});
-
-app.delete('/dishes/:dishId', (req, res, next) => {
-    res.end('Deleting dish: ' + req.params.dishId);
-});
-//////////////////////////////////////////////////////////////////////////
 
 app.use((req, res, next) => {
   console.log(req.headers);
