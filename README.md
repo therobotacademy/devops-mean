@@ -9,3 +9,8 @@ Training examples for learning MEAN stack (Angular will be deployed in a separat
 
 ## 1.6.d Exercise (Instructions) Node and the HTTP Module
    - '*node-http*' folder and app
+
+## 1.7.d Exercise (Instructions) Introduction to Express
+   - '*node-express' folder and app
+   - morgan module will provide more detailed info about GET requests in the console log
+##
