@@ -3,10 +3,10 @@ const express = require('express'),
 //...1.7.d
 const morgan = require('morgan');
 //...
-//...1.7.e
+//...1.7.h
 const bodyParser = require('body-parser');
 //--------------------------------------------------
-//const dishRouter = require('./routes/dishRouter');
+const dishRouter = require('./routes/dishRouter');
 //. . .
 
 const hostname = 'localhost';
@@ -16,36 +16,22 @@ const app = express();
 
 //. . .1.7.d
 app.use(morgan('dev'));
-//. . . 1.7.e
+//. . . 1.7.h
 app.use(bodyParser.json());
 //. . .
 
-//. . . 1.7.e
+//. . . 1.7.h
 //--------------------------------------------------
-//app.use('/dishes', dishRouter);
+app.use('/dishes', dishRouter);
 app.all('/dishes', (req,res,next) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   next();
 });
 
-app.get('/dishes', (req,res,next) => {
-    res.end('Will send all the dishes to you!');
-});
-
-app.post('/dishes', (req, res, next) => {
- res.end('Will add the dish: ' + req.body.name + ' with details: ' + req.body.description);
-});
-
-app.put('/dishes', (req, res, next) => {
-  res.statusCode = 403;
-  res.end('PUT operation not supported on /dishes');
-});
-
-app.delete('/dishes', (req, res, next) => {
-    res.end('Deleting all dishes');
-});
-
+/////////////////////////////////////////////////////////////////////////////
+// THIS PART (not routed) ALLOWS TO INTERACT WITH SINGLE ENTITIES (dishes)
+// ... does not work if put inside './router/dishRouter.js' Don't know why...
 app.get('/dishes/:dishId', (req,res,next) => {
     res.end('Will send details of the dish: ' + req.params.dishId +' to you!');
 });
@@ -64,17 +50,18 @@ app.put('/dishes/:dishId', (req, res, next) => {
 app.delete('/dishes/:dishId', (req, res, next) => {
     res.end('Deleting dish: ' + req.params.dishId);
 });
-//. . .
+//////////////////////////////////////////////////////////////////////////
 
 app.use((req, res, next) => {
   console.log(req.headers);
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
   res.end('<html><body><h1>This is an Express Server</h1></body></html>');
-
 });
 
+//. . .1.7.d
 app.use(express.static(__dirname + '/public'));
+//. . .
 const server = http.createServer(app);
 
 server.listen(port, hostname, () => {
