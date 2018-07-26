@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const dishRouter = require('./routes/dishRouter');
 const promoRouter = require('./routes/promoRouter');
+const leaderRouter = require('./routes/leaderRouter');
 
 const hostname = 'localhost';
 const port = 3000;
@@ -15,7 +16,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-// Dish Router
+// leader Router
 app.use('/dishes/', dishRouter);
 app.use('/dishes/:dishId', dishRouter);
 app.all('/dishes', (req,res,next) => {
@@ -26,8 +27,17 @@ app.all('/dishes', (req,res,next) => {
 
 // Promo Router
 app.use('/promos/', promoRouter);
-app.use('/promos/:romoId', promoRouter);
+app.use('/promos/:promoId', promoRouter);
 app.all('/promos', (req,res,next) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  next();
+});
+
+// Leader Router
+app.use('/leaders/', leaderRouter);
+app.use('/leaders/:leaderId', leaderRouter);
+app.all('/leaders', (req,res,next) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   next();
