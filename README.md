@@ -35,6 +35,8 @@ Training examples for learning MEAN stack (Angular will be deployed in a separat
 
 ### 2.3.2 Node and MongoDB Part 1
 #### Folder: 'node-mongo'
+File 'index.js'
 
 ### 2.3.3 Node and MongoDB Part 2
 #### Folder: 'node-mongo'
+File 'operations.js'
