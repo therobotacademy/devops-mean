@@ -1,4 +1,4 @@
-# devops-mean
+# devops-mean & Node.js focus
 Training examples for learning MEAN stack (Angular will be deployed in a separate repository 'devops-angular')
 
 
